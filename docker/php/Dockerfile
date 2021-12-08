@@ -1,6 +1,7 @@
 FROM php:7.4-fpm-alpine
 
 RUN apk add --update \
+    --no-cache $PHPIZE_DEPS \
     make \
     curl \
     nodejs \
@@ -14,6 +15,9 @@ RUN install-php-extensions \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     ln -s $(composer config --global home) /root/composer
+
+RUN pecl install xdebug-2.9.8 && docker-php-ext-enable xdebug
+
 ENV PATH=$PATH:/root/composer/vendor/bin COMPOSER_ALLOW_SUPERUSER=1
 
 ADD php.ini /etc/php/conf.d/

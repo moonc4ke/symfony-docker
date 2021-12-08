@@ -42,6 +42,31 @@ DATABASE_URL=mysql://root:root@mysql:3306/symfony?serverVersion=5.7
 ### Ready up
 call [localhost](http://localhost:81/) in your browser
 
+### Xdebug for VSCode
+create .vscode/launch.json with following configuration:
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9005,
+            "hostname": "0.0.0.0",
+            "pathMappings": {
+                "/var/www/symfony": "${workspaceRoot}"
+            },
+            "log": true,
+            "xdebugSettings": {
+                "max_children": 100,
+                "max_depth": 3
+            }
+        }
+    ]
+}
+```
+
 ### Thanks a lot to
 https://github.com/mlocati/docker-php-extension-installer \
 https://github.com/denji/nginx-tuning
