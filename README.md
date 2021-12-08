@@ -66,6 +66,7 @@ create .vscode/launch.json with following configuration:
     ]
 }
 ```
+For Xdebug to work with Postman use XDEBUG_SESSION_START=XDEBUG_ECLIPSE as a query parameter.
 
 ### Thanks a lot to
 https://github.com/mlocati/docker-php-extension-installer \
